@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CYBERPUNK 2077 // JOURNAL & FIXER CONTRACTS [HUD v2.2]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Camada de scanlines estilo ótica Kiroshi -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <main class="cyber-container">
+    <!-- Barra de Telemetria Superior (HUD Kiroshi Optics) -->
+    <header class="hud-header">
+      <div class="hud-top-bar">
+        <span class="hud-badge">KIROSHI OPTICS // OS v2.2 PATCH</span>
+        <span class="hud-badge hud-badge--edgerunners">SEASON 02 // EDGERUNNERS TRIBUTE</span>
+        <span class="hud-status"><span class="pulse-dot"></span> REDE NETWATCH: CONECTADA</span>
+      </div>
+
+      <div class="title-block">
+        <h1 class="glitch-title" data-text="NIGHT CITY // CONTRATOS & MISSÕES">
+          NIGHT CITY // CONTRATOS &amp; MISSÕES
+        </h1>
+        <p class="subtitle">
+          GERENCIADOR TÁTICO DE TAREFAS DO MERCENÁRIO &mdash; <span class="accent-cyan">AFTERLIFETERMINAL_2077</span>
+        </p>
+      </div>
+
+      <!-- Painel de Estatísticas de Missões -->
+      <section class="stats-grid" aria-label="Estatísticas das tarefas">
+        <div class="stat-card">
+          <span class="stat-label">TOTAL DE CONTRATOS</span>
+          <strong id="count-total" class="stat-value">0</strong>
+        </div>
+        <div class="stat-card stat-card--pending">
+          <span class="stat-label">EM ANDAMENTO</span>
+          <strong id="count-pending" class="stat-value">0</strong>
+        </div>
+        <div class="stat-card stat-card--completed">
+          <span class="stat-label">CONCLUÍDOS</span>
+          <strong id="count-completed" class="stat-value">0</strong>
+        </div>
+      </section>
+    </header>
+
+    <!-- Formulário de Adição de Tarefas -->
+    <section class="input-panel" aria-label="Adicionar nova missão">
+      <form id="todo-form" class="cyber-form" autocomplete="off">
+        <div class="input-wrapper">
+          <label for="todo-input" class="sr-only">Descrição da nova tarefa</label>
+          <span class="input-prefix">GIG_ID&gt;</span>
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="Registrar novo contrato ou tarefa em Night City..."
+            maxlength="120"
+            required
+          />
+        </div>
+
+        <div class="select-wrapper">
+          <label for="todo-priority" class="sr-only">Nível de Ameaça</label>
+          <select id="todo-priority" aria-label="Prioridade do Contrato">
+            <option value="ALTA">AMEAÇA: ALTA</option>
+            <option value="MEDIA" selected>AMEAÇA: MÉDIA</option>
+            <option value="BAIXA">AMEAÇA: BAIXA</option>
+          </select>
+        </div>
+
+        <button type="submit" id="add-btn" class="cyber-btn">
+          <span class="btn-text">+ REGISTRAR GIG</span>
+          <span class="btn-tag">R2.2</span>
+        </button>
+      </form>
+    </section>
+
+    <!-- Barra de Filtros -->
+    <nav class="filter-bar" aria-label="Filtrar tarefas">
+      <button type="button" class="filter-btn active" data-filter="all">
+        TODOS OS REGISTROS
+      </button>
+      <button type="button" class="filter-btn" data-filter="pending">
+        ATIVOS
+      </button>
+      <button type="button" class="filter-btn" data-filter="completed">
+        FINALIZADOS
+      </button>
+    </nav>
+
+    <!-- Lista de Tarefas (Manipulada via DOM) -->
+    <section class="list-section" aria-live="polite">
+      <ul id="todo-list" class="cyber-list"></ul>
+
+      <!-- Estado Vazio -->
+      <div id="empty-state" class="empty-state" hidden>
+        <p class="empty-code">[LOG_VAZIO // 0x2077]</p>
+        <p class="empty-text">Nenhum contrato ativo no seu Cyberdeck. Adicione uma nova missão acima, Choom!</p>
+      </div>
+    </section>
+
+    <!-- Rodapé do Terminal -->
+    <footer class="hud-footer">
+      <span>SYS_LOC: WATSON // LITTLE CHINA</span>
+      <span>MEM_BUFFER: LOCALSTORAGE_SYNC</span>
+      <span>STATUS: <strong class="accent-yellow">PREEM</strong></span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
